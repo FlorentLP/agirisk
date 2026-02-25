@@ -1,0 +1,102 @@
+.list-layout {
+  display: flex;
+  height: calc(100vh - 8rem);
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panel-content .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.panel-content .field label {
+  font-weight: 500;
+}
+
+.panel-content .field .hint {
+  font-size: 0.75rem;
+  color: var(--p-text-muted-color, #6b7280);
+}
+
+.panel-content .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.content p-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.content :global(.p-panel-content) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.content .map {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+.map :global(.leaflet-container) {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.selection-hint {
+  font-size: 0.85rem;
+  color: var(--p-text-muted-color, #666);
+  margin: 0;
+}
+
+/* Pin de sélection au clic sur la carte (créé par Leaflet, hors du composant) */
+:global(.selection-pin) {
+  background: none !important;
+  border: none !important;
+  z-index: 1000 !important;
+}
+
+:global(.selection-pin .selection-pin-inner) {
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 50%;
+  background: #c00;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 3px solid #fff;
+  box-sizing: border-box;
+}

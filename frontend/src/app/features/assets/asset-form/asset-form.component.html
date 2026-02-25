@@ -1,0 +1,48 @@
+<div class="form-wrapper">
+  <p-card header="Nouvel actif">
+    @if (errorMessage) {
+      <p-message severity="error" [text]="errorMessage" styleClass="mb-3" />
+    }
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label for="name">Nom *</label>
+        <input pInputText id="name" formControlName="name" />
+        @if (form.get('name')?.invalid && form.get('name')?.touched) {
+          <small class="error">Requis</small>
+        }
+      </div>
+      <div class="field">
+        <label>Catégorie *</label>
+        <p-select
+          formControlName="category"
+          [options]="categoryOptions"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Choisir"
+        />
+      </div>
+      <div class="field">
+        <label>Statut *</label>
+        <p-select
+          formControlName="status"
+          [options]="statusOptions"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Choisir"
+        />
+      </div>
+      <div class="field">
+        <label>Latitude *</label>
+        <p-inputNumber formControlName="latitude" [useGrouping]="false" />
+      </div>
+      <div class="field">
+        <label>Longitude *</label>
+        <p-inputNumber formControlName="longitude" [useGrouping]="false" />
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <p-button label="Créer" [loading]="submitting" (onClick)="onSubmit()" />
+      <p-button type="button" label="Annuler" [routerLink]="['/']" [outlined]="true" />
+    </ng-template>
+  </p-card>
+</div>

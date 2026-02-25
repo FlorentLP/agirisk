@@ -1,0 +1,38 @@
+<div class="list-layout">
+  <aside class="sidebar">
+    <p-panel header="Filtres">
+      <div class="panel-content">
+        <div class="field">
+          <label>Catégorie</label>
+          <p-select
+            [options]="categoryOptions"
+            optionLabel="label"
+            optionValue="value"
+            [(ngModel)]="filterCategory"
+            placeholder="Toutes"
+            [showClear]="true"
+          />
+        </div>
+        <div class="field">
+          <label>Rayon (m)</label>
+          <p-inputNumber [(ngModel)]="filterRadius" placeholder="ex: 500" [min]="1" [useGrouping]="false" />
+          <small class="hint">Cliquez sur la carte pour définir le centre.</small>
+        </div>
+        @if (selectedLat != null && selectedLon != null) {
+          <p class="selection-hint">Point sélectionné : {{ selectedLat | number:'1.4-4' }}, {{ selectedLon | number:'1.4-4' }}</p>
+          <p-button label="Effacer le point" [outlined]="true" (onClick)="clearSelection()" severity="secondary" />
+        }
+        <div class="actions">
+          <p-button label="Appliquer" (onClick)="applyFilters()" />
+          <p-button label="Effacer polygone" [outlined]="true" (onClick)="clearPolygon()" severity="secondary" />
+          <p-button label="Nouvel actif" (onClick)="goToNewAsset()" />
+        </div>
+      </div>
+    </p-panel>
+  </aside>
+  <div class="content">
+    <p-panel header="Carte">
+      <div #mapRef class="map"></div>
+    </p-panel>
+  </div>
+</div>

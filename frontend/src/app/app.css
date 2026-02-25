@@ -1,0 +1,9 @@
+.p-toolbar-title {
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  padding: 1rem;
+}
